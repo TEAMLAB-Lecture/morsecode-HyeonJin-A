@@ -34,7 +34,7 @@ def is_help_command(user_input):
 
 def is_validated_english_sentence(user_input):
     if(len(re.sub('[^ a-zA-Z!?.,]','',user_input))<len(user_input)): return False
-    if(len(re.sub('[^.,!?]','',user_input))==len(user_input)): return False
+    if(len(re.sub('[^ .,!?]','',user_input))==len(user_input)): return False
     else: return True
     
 def is_validated_morse_code(user_input):
