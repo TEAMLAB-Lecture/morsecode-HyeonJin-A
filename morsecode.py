@@ -44,7 +44,8 @@ def is_validated_morse_code(user_input):
     return True
 
 def get_cleaned_english_sentence(raw_english_sentence):
-    return re.sub('[.,!?]','',raw_english_sentence).strip()
+    result = re.sub('[.,!?]','',raw_english_sentence)
+    return re.sub(' +',' ',result).strip()
 
 def decoding_character(morse_character):
     morse_code_dict = get_morse_code_dict()
@@ -71,8 +72,8 @@ def main():
         user_input = input("Input your message(H - Help, 0 - Exit):")
         if(user_input=='0'): break
         if(is_help_command(user_input)): print(get_help_message())
-        elif(is_validated_english_sentence(user_input)): print(encoding_sentence(user_input))
         elif(is_validated_morse_code(user_input)): print(decoding_sentence(user_input))
+        elif(is_validated_english_sentence(user_input)): print(encoding_sentence(user_input))
         else: print("Wrong Input")
     print("Good Bye")
     print("Morse Code Program Finished!!")
